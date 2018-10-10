@@ -1,35 +1,46 @@
 package tips.entity;
 
 public enum MenuItemEnum {
-	COLA(ItemType.COLD, 0.5),
-	COFFEE(ItemType.HOT, 1),
-	CHEESE_SANDWICH(ItemType.COLD, 2),
-	STEAK_SANDWICH(ItemType.HOT, 4.5);
+	COLA(TemperatureEnum.COLD, ItemTypeEnum.DRINK, 0.5),
+	COFFEE(TemperatureEnum.HOT, ItemTypeEnum.DRINK, 1),
+	CHEESE_SANDWICH(TemperatureEnum.COLD, ItemTypeEnum.FOOD, 2),
+	STEAK_SANDWICH(TemperatureEnum.HOT, ItemTypeEnum.FOOD, 4.5);
 
-	private ItemType type;
+	private TemperatureEnum temperature;
+	private ItemTypeEnum type;
 	private double price;
 
-	MenuItemEnum(ItemType type, double price) {
+	MenuItemEnum(TemperatureEnum temperature, ItemTypeEnum type, double price) {
+		this.temperature = temperature;
 		this.type = type;
 		this.price = price;
 	}
 
-	public ItemType getType() {
-		return type;
+	public TemperatureEnum getTemperature() {
+		return temperature;
 	}
 
 	public double getPrice() {
 		return price;
 	}
 
-	enum ItemType {
+	public ItemTypeEnum getType() {
+		return type;
+	}
+
+	public enum TemperatureEnum {
 		HOT("Hot"),
 		COLD("Cold");
 
 		private String value;
 
-		ItemType(String value) {
+		TemperatureEnum(String value) {
 			this.value = value;
 		}
+	}
+
+	public enum ItemTypeEnum {
+		DRINK,
+		FOOD
 	}
 }
